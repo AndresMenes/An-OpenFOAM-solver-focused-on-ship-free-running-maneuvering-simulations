@@ -30,14 +30,14 @@ solvers
 
     boat_propeller
     {
-        motionSolverLibs    (librigidBodyMeshMotion);
+        motionSolverLibs    (libmyrigidBodyMeshMotion);
         motionSolver         rigidBodyMotion;
 
         report              on;
         cellSet             cHullRudder;
         cOfGdisplacement    CofG;
-        //bodyIdCofG      1;
-        bodyIdCofG      hull;
+        bodyIdCofG      1;
+        //bodyIdCofG      hull;
 
         solver
         {
@@ -70,7 +70,21 @@ solvers
                          {
                               type Px;
                          }
-                                                                          
+                         {
+                              type Py;
+                         } 
+                         {
+                              type Pz;
+                         }
+                         {
+                              type Rx;
+                         }
+                         {
+                              type Ry;
+                         }                                                     
+                         {
+                              type Rz;
+                         }                                                                             
                     );
                 }
                 patches
@@ -124,29 +138,29 @@ solvers
                 startTime   0;
             }             
 
-            translationDamper
-            {
-                type linearDamper;
-                body hull;
-                coeff 100;
-            }
+            //translationDamper
+            //{
+            //    type linearDamper;
+            //    body hull;
+            //    coeff 100;
+            //}
 
 
-            force
-            {
-              type externalForce;
-              body hull;
-              location (1.39 0 0.0411574);
-              force table
-              (
-                (0 (-133.8 0 0))
-                (2 (-133.8 0 0))
-                (5 (-133.8 0 0))
-                (500 (-133.8 0 0))
+            //force
+            //{
+            //  type externalForce;
+            //  body hull;
+            //  location (1.39 0 0.0411574);
+            //  force table
+            //  (
+            //    (0 (-133.8 0 0))
+            //    (2 (-133.8 0 0))
+            //    (5 (-133.8 0 0))
+            //    (500 (-133.8 0 0))
               
-              );
+            //  );
             
-            }         
+            //}         
                                   
         }
         maneuvers

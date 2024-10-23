@@ -296,7 +296,7 @@ addLayersControls
     {
         "(hull_hull)"
         {
-            nSurfaceLayers 8;
+            nSurfaceLayers 2;
         }
     }
     relativeSizes    true ;

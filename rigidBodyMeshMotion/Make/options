@@ -1,0 +1,28 @@
+EXE_INC = \
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/fileFormats/lnInclude \
+    -I$(LIB_SRC)/meshTools/lnInclude \
+    -I$(LIB_SRC)/functionObjects/forces/lnInclude \
+    -I$(LIB_SRC)/dynamicMesh/lnInclude \
+    -I$(LIB_SRC)/rigidBodyDynamics/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/An-OpenFOAM-solver-focused-on-ship-free-running-maneuvering-simulations/maneuveringOutput/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/An-OpenFOAM-solver-focused-on-ship-free-running-maneuvering-simulations/functionObjects/forceMultiphase/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/An-OpenFOAM-solver-focused-on-ship-free-running-maneuvering-simulations/rigidBodyDynamics/rigidBodyMotion/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/An-OpenFOAM-solver-focused-on-ship-free-running-maneuvering-simulations/rigidBodyDynamics/rigidBodyModel/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/An-OpenFOAM-solver-focused-on-ship-free-running-maneuvering-simulations/rigidBodyDynamics/rigidBodyModelState/lnInclude \
+    -I$(LIB_SRC)/overset/cellCellStencil/cellCellStencil/lnInclude \
+
+
+LIB_LIBS = \
+    -lfiniteVolume \
+    -lmeshTools \
+    -lforces \
+    -lfvOptions \
+    -loverset \
+    -lrigidBodyDynamics \
+    -ldynamicMesh \
+    -L$(FOAM_USER_LIBBIN) -lmaneuveringOutput \
+    -L$(FOAM_USER_LIBBIN) -lforceMultiphase \
+    -L$(FOAM_USER_LIBBIN) -lmyrigidBodyModel \
+    -L$(FOAM_USER_LIBBIN) -lmyrigidBodyModelState \
+    -L$(FOAM_USER_LIBBIN) -lmyrigidBodyMotion

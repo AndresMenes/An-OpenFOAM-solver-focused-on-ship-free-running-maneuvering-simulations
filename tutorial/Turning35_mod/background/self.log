@@ -1,0 +1,205 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2306                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _fbf00d6b-20230626 OPENFOAM=2306 version=2306
+Arch   : "LSB;label=32;scalar=64"
+Exec   : overInterDyMFoam -parallel
+Date   : Oct 22 2024
+Time   : 13:56:06
+Host   : ingserver
+PID    : 1203293
+I/O    : uncollated
+Case   : /home/ofandres/Programacion/maneuvering-simulations/tutorial/Turning35_2/background
+nProcs : 8
+Hosts  :
+(
+    (ingserver 8)
+)
+Pstream initialized with:
+    floatTransfer      : false
+    nProcsSimpleSum    : 0
+    nonBlockingExchange: 0 (tuning: 0)
+    exchange algorithm : -1
+    commsType          : nonBlocking
+    polling iterations : 0
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 188
+    Could not load "libmyrigidBodyMeshMotion"
+/home/ofandres/OpenFOAM/ofandres-v2306/platforms/linux64GccDPInt32Opt/lib/libmyrigidBodyModel.so: undefined symbol: _ZTVN4Foam3RBD9rigidBodyE
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 188
+    Could not load "libmyrigidBodyModel"
+/home/ofandres/OpenFOAM/ofandres-v2306/platforms/linux64GccDPInt32Opt/lib/libmyrigidBodyModel.so: undefined symbol: _ZTVN4Foam3RBD9rigidBodyE
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 188
+    Could not load "libmyrigidBodyModelState"
+/home/ofandres/OpenFOAM/ofandres-v2306/platforms/linux64GccDPInt32Opt/lib/libmyrigidBodyModel.so: undefined symbol: _ZTVN4Foam3RBD9rigidBodyE
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 188
+    Could not load "libmyrigidBodyMotion"
+/home/ofandres/OpenFOAM/ofandres-v2306/platforms/linux64GccDPInt32Opt/lib/libmyrigidBodyModel.so: undefined symbol: _ZTVN4Foam3RBD9rigidBodyE
+Create mesh for time = 0
+
+Selecting dynamicFvMesh dynamicOversetFvMesh
+Selecting motion solver: solidBody
+Applying motion to cellSet: c0
+Selecting solid-body motion function driven3DofMotion
+Selecting motion solver: rigidBodyMotion
+Applying motion to cellSet: cHullRudder
+Selecting rigidBodySolver Newmark
+
+reference rigid body：hull
+acting rigid body：disk1
+
+********************************
+oldError: 0
+errorIntegral: 0
+outputSignal: 5
+
+reference rigid body：hull
+acting rigid body：rudder
+forceMultiphase hull:
+    Not including porosity effects
+    forces will be caculated on: water phase
+
+forceMultiphase rudder:
+    Not including porosity effects
+    forces will be caculated on: water phase
+
+trackingInverseDistance : detected 3 mesh regions
+    zone:0 nCells:160356
+    zone:1 nCells:165454
+    zone:2 nCells:40377
+
+PIMPLE: Operating solver in PISO mode
+
+Reading field p_rgh
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Creating cellMask field to block out hole cells
+
+--> FOAM Warning : 
+    From bool Foam::oversetPolyPatch::master() const
+    in file oversetPolyPatch/oversetPolyPatch.C at line 145
+    The master overset patch is not the first patch. Generally the first patch should be an overset patch to guarantee consistent operation.
+--> FOAM Warning : 
+    From bool Foam::oversetPolyPatch::master() const
+    in file oversetPolyPatch/oversetPolyPatch.C at line 145
+    The master overset patch is not the first patch. Generally the first patch should be an overset patch to guarantee consistent operation.
+Creating interpolatedCells field 
+
+Reading transportProperties
+
+Selecting incompressible transport model Newtonian
+Selecting incompressible transport model Newtonian
+Selecting turbulence model type RAS
+Selecting RAS turbulence model kOmegaSST
+Selecting patchDistMethod Poisson
+
+ Number of layers : 2
+ Average volumetric ratio : 2(2.1248915 1.3231366)
+ Number of holes cells : 2(25820 26066)
+ Using layer : 1
+
+Overset analysis : nCells : 366187
+    calculated   : 316711
+    interpolated : 29665 (from local:26824  mixed local/remote:2841  remote:0)
+    hole         : 19811
+
+DILUPBiCGStab:  Solving for yPsi, Initial residual = 1, Final residual = 9.0737608e-08, No Iterations 161
+RAS
+{
+    RASModel        kOmegaSST;
+    turbulence      on;
+    printCoeffs     on;
+    alphaK1         0.85;
+    alphaK2         1;
+    alphaOmega1     0.5;
+    alphaOmega2     0.856;
+    gamma1          0.55555556;
+    gamma2          0.44;
+    beta1           0.075;
+    beta2           0.0828;
+    betaStar        0.09;
+    a1              0.31;
+    b1              1;
+    c1              10;
+    F3              false;
+    decayControl    false;
+    kInf            0;
+    omegaInf        0;
+}
+
+
+Reading g
+
+Reading hRef
+Calculating field g.h
+
+No MRF models present
+
+Creating finite volume options from "system/fvOptions"
+
+Selecting finite volume options type velocityDampingConstraint
+    Source: damp
+    - selecting all cells
+    - selected 366187 cell(s) with volume 444.0467
+Selecting finite volume options type oumSource
+    Source: disk1
+	- creating actuation disk zone: disk1
+
+revolution per second has been updated!
+
+momentum source position has been updated!
+
+momentum source cells have been updated!
+
+- selected 2151 cell(s) with volume 0.00017715338
+
+diskR_ 0.0465
+diskDir_(-1 0 0)
+diskOri_(2.65275 0 -0.078651)
+bladeN_ 5
+diskRPS_ 0
+	- selected 2151 cell(s) with volume 0.00017715338
+
+refBody hull
+actBody disk1
+chordCoef_ 6(6.2575 -36.837 125.59 -226.05 201.38 -70.321)
+pitchCoef_ 6(21.437 -108.69 295.87 -430.02 312.63 -89.56)
+diskR_ 0.0465
+diskH_ 0.186
+diskDir_(-1 0 0)
+diskOri_(2.65275 0 -0.078651)
+diskThick_ 0.01897182
+bladeN_ 5
+diskRPS_ 0
+Reading/calculating face velocity Uf
+
+Courant Number mean: 0 max: 0
+
+Starting time loop
+
+Courant Number mean: 0 max: 0
+Interface Courant Number mean: 0 max: 0
+Time = 0.0025
+
+PIMPLE: iteration 1

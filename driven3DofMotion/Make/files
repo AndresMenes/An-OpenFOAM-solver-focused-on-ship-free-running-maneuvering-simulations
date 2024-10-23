@@ -1,0 +1,3 @@
+driven3DofMotion.C
+
+LIB = $(FOAM_USER_LIBBIN)/libdriven3DofMotion

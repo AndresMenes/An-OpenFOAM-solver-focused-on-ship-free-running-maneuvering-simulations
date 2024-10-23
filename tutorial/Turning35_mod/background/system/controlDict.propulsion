@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-libs            (overset rigidBodyDynamics);
+libs            (overset "libmyrigidBodyDynamics.so" "libmyrigidBodyMeshMotion.so" "libdriven3DofMotion.so" "libsourceForce.so" "liboumSource.so");
 
 application     overInterDyMFoam;
 

@@ -1,0 +1,5 @@
+rigidBodyModel/myrigidBodyModel.C
+rigidBodyModelState/myrigidBodyModelState.C
+rigidBodyMotion/myrigidBodyMotion.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmyrigidBodyDynamics

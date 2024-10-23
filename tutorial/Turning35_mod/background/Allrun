@@ -7,6 +7,9 @@ cd "${0%/*}" || exit                                # Run from this directory
 
 ./Allrun.pre
 
+cp ./system/controlDict.propulsion ./system/controlDict
+cp ./constant/dynamicMeshDict.propulsion ./constant/dynamicMeshDict
+
 restore0Dir
 
 touch case.foam
@@ -25,11 +28,10 @@ runApplication -s 2 setFields -dict system/setFieldsDict.2
 
 runApplication -s 7 \
     topoSet -dict system/topoSetDict.cHullRudder
+    
+
 
 runApplication decomposePar -force
-
-cp ./system/controlDict.propulsion controlDict
-cp ./constant/dynamicMeshDict.propulsion dynamicMeshDict
 
 mpirun -np 8 overInterDyMFoam -parallel | tee self.log
 
@@ -37,12 +39,12 @@ rm ./system/controlDict
 
 rm ./constant/dynamicMeshDict
 
-cp ./system/controlDict.turning controlDict
-cp ./system/dynamicMeshDict.turning dynamicMeshDict
+cp ./system/controlDict.turning ./system/controlDict
+cp ./system/dynamicMeshDict.turning ./constant/dynamicMeshDict
 
-cp maneuvers ./processor0/10/uniform
+#cp maneuvers ./processor0/10/uniform
 
-mpirun -np 8 overInterDyMFoam -parallel | tee turning.log
+#mpirun -np 8 overInterDyMFoam -parallel | tee turning.log
 
 #runParallel $(getApplication) >> o.log
 

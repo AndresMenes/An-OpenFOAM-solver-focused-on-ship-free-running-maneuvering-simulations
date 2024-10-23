@@ -16,7 +16,7 @@ FoamFile
 
 castellatedMesh true;
 snap            true;
-addLayers       true;
+addLayers       false;
 
 geometry
 {
@@ -207,7 +207,7 @@ addLayersControls
     {
         "(rudder)"
         {
-            nSurfaceLayers 6;
+            nSurfaceLayers 1;
         }
     }
     relativeSizes    true ;
