@@ -26,7 +26,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "rigidBodyMotion.H"
+#include "myrigidBodyMotion.H"
 #include "rigidBodySolver.H"
 #include "septernion.H"
 

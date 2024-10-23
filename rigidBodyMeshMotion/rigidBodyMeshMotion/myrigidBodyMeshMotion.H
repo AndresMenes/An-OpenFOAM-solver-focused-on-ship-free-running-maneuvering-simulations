@@ -45,7 +45,7 @@ SourceFiles
 #define rigidBodyMeshMotion_H
 
 #include "displacementMotionSolver.H"
-#include "rigidBodyMotion.H"
+#include "myrigidBodyMotion.H"
 #include "ramp.H"
 #include "maneuveringOutput.H"
 #include "writeFile.H"

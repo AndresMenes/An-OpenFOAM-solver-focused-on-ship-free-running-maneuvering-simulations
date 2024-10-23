@@ -39,7 +39,7 @@ SourceFiles
 #ifndef rigidBodyModelState_H
 #define rigidBodyModelState_H
 
-#include "rigidBodyModel.H"
+#include "myrigidBodyModel.H"
 #include "scalarField.H"
 #include "dictionary.H"
 

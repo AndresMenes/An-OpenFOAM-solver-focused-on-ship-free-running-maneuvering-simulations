@@ -26,7 +26,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "rigidBodyModel.H"
+#include "myrigidBodyModel.H"
 #include "masslessBody.H"
 #include "compositeBody.H"
 #include "jointBody.H"

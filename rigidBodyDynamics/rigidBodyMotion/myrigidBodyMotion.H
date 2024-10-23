@@ -49,8 +49,8 @@ SourceFiles
 #ifndef rigidBodyMotion_H
 #define rigidBodyMotion_H
 
-#include "rigidBodyModel.H"
-#include "rigidBodyModelState.H"
+#include "myrigidBodyModel.H"
+#include "myrigidBodyModelState.H"
 #include "pointField.H"
 #include "Switch.H"
 #include "Function1.H"
@@ -254,7 +254,7 @@ public:
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include "rigidBodyMotionI.H"
+#include "myrigidBodyMotionI.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

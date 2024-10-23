@@ -26,7 +26,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "rigidBodyMeshMotion.H"
+#include "myrigidBodyMeshMotion.H"
 #include "addToRunTimeSelectionTable.H"
 #include "polyMesh.H"
 #include "pointPatchDist.H"
