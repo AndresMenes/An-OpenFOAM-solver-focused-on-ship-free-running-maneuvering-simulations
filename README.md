@@ -1,18 +1,16 @@
-# An OpenFOAM solver focused on free-running maneuvering simulations
+# An OpenFOAM solver focused on free-running maneuvering simulations - CustoHOsource branch
 
 Summary
 
 These modifications are based on the "overInterDyMFoam" solver in OpenFOAM v2206.
-There are several modules which were modified or added, and its general funtion is realizing the maneuvering motions of ship.
-A 35 degree turning tutorial has been updated.
+---This has been compiled using OpenFOAM v2306---
 
 Functions
-  1. Modified the storage structure of rigidBodyState dictionary, which can make change of number of Degree of freedom (Dof) when you modify the dynamicMeshDict in /constant possible.
-    1.1
-  2. add a new solidBody motion "driven3DofMotion" in /src/dynamicMesh/motionSolvers/displacement/solidBody/solidBodyMotionFunctions. It was modified from drivenLinearMotion, and it can realize the following rotation of background mesh region, which is useful for maneuvering motions like turning or zigzag.
-  3. add a new momentum source method "oumSource" in /src/fvOptions/sources/derived. It is based on blade element momentum theory, and you can find details from the reference, it can be used to replace the real propeller as a propulsion device.
-  4. add 4 different maneuvering motions, self-propulsion, turning, zigzag and coursekeeping, for ship. First, it utilize the PID controller to adjust the revolution speed of discretized propeller or momentum source in "sailing" mode, and the PID contorller is also applied to control the rudder motion in "coursekeeping" mode. The rudder controller is used to realize "turning" and "zigzag" maneuvering motions.
-
+  1. Added a modified HOsource (myHOsource) to calculate power produced by the propeller, both predicted and actual based on the current code. 
+  2. Added make/ folders with files and options to showcase a possible way of compiling the libraries. 
+  3. Modified the tutorial to incorporate the new changes.
+  
 P.S.
 
-This serial will be updated continuously in the future. Those modules may have some bugs due to the neglect of author, and if you have any question or suggestion, please feel free to use the "Issues" button.
+The code compiles but the tutorial is not working, currently under investigation why. An issue was opened on the original code of Balabibo to see what has been done incorrectly. 
+myHOsource compiles correctly and seems to produce correct results (currently under validation).
