@@ -27,7 +27,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "HOSource.H"
+#include "myHOSource.H"
 #include "geometricOneField.H"
 //#include "cellSet.H"
 #include "addToRunTimeSelectionTable.H"
@@ -158,7 +158,7 @@ Foam::fv::HOSource::HOSource
          << "diskRPS_ " << diskRPS_<<endl;
         
     Ostream& os = file();
-        os<<"Time"<<tab<<"diskRPS"<<tab<<"thrust"<<tab << "KT" <<tab<<"torque"<<tab<<"10KQ"<<tab<<"Fy"<<tab<<endl;
+        os<<"Time"<<tab<<"diskRPS"<<tab<<"thrust"<<tab << "KT" <<tab<<"torque"<<tab<<"10KQ"<<tab<<"Fy"<<tab<<"Power"<<endl;
 
 }
 

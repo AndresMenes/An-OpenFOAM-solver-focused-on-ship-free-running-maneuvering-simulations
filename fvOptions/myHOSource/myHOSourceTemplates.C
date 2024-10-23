@@ -27,7 +27,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "HOSource.H"
+#include "myHOSource.H"
 // #include "fvMesh.H"
 // #include "fvMatrix.H"
 // #include "volFields.H"
@@ -65,6 +65,7 @@ void Foam::fv::HOSource::calc
 
   scalar thrust = KT(J)*refRho*sqr(diskRPS_)*pow4(2*diskR_);
   scalar torque = KQ(J)*refRho*sqr(diskRPS_)*pow5(2*diskR_);
+  scalar power = 2*M_PI*diskRPS_*torque;
   scalar   Ax   = 105*thrust/8/(M_PI*diskThick_*(3*diskH_*diskR_ + 4*diskR_)*(diskR_ - diskH_*diskR_));
   scalar Atheta = 105*torque/8/(M_PI*diskThick_*diskR_*(3*diskH_*diskR_ + 4*diskR_)*(diskR_ - diskH_*diskR_));
   // Info<<nl<<"target thrust = "<<thrust<<nl
@@ -76,6 +77,7 @@ void Foam::fv::HOSource::calc
 
   scalar Tdisk = 0;
   scalar Qdisk = 0;
+  scalar Pdisk = 0;
 
   forAll(cells, i)
   {
@@ -93,6 +95,7 @@ void Foam::fv::HOSource::calc
   Usource[cells[i]] += fbx*diskDir_ + fbtheta*tanQ;
   Tdisk += fbx;
   Qdisk += mag(TQ)*fbtheta;
+  Pdisk += 2*M_PI*diskRPS_*mag(TQ)*fbtheta;
   vector moment = meshPosi[cells[i]] ^ Usource[cells[i]];
   fx_ += spatialVector(moment, Usource[cells[i]]);
 
@@ -100,6 +103,7 @@ void Foam::fv::HOSource::calc
   reduce(fx_, sumOp<spatialVector>());
   reduce(Tdisk, sumOp<scalar>());
   reduce(Qdisk, sumOp<scalar>());
+  reduce(Pdisk, sumOp<scalar>());
   
   // Info<<nl<<"fx = "<<fx_<<endl;
   if
@@ -128,16 +132,19 @@ void Foam::fv::HOSource::calc
       <<"actual KT = "<<Tdisk/(refRho*diskRPS_*diskRPS_*pow(2*diskR_,4))<<nl
       <<"target torque = "<<torque<<nl
       <<"actual torque = "<<Qdisk<<nl
+      <<"predicted power (W) = "<<power<<nl
+      <<"actual power (W) = "<<Pdisk<<nl
       <<"target 10KQ = "<<10*torque/(refRho*diskRPS_*diskRPS_*pow(2*diskR_,5))<<nl
       <<"actual 10KQ = "<<10*Qdisk/(refRho*diskRPS_*diskRPS_*pow(2*diskR_,5))<<nl
       << "external force = "<<fx_<<endl;
+
   
   scalar Fy = 0;
   if(Pstream::master())
   {
     Ostream& os = file();
     writeCurrentTime(os);
-    os << tab << diskRPS_<< tab <<Tdisk<< tab << Tdisk/(refRho*diskRPS_*diskRPS_*pow(2*diskR_,4))<< tab << Qdisk << tab << 10*Qdisk/(refRho*diskRPS_*diskRPS_*pow(2*diskR_,5)) << tab <<Fy <<endl;      
+    os << tab << diskRPS_<< tab <<Tdisk<< tab << Tdisk/(refRho*diskRPS_*diskRPS_*pow(2*diskR_,4))<< tab << Qdisk << tab << 10*Qdisk/(refRho*diskRPS_*diskRPS_*pow(2*diskR_,5)) << tab <<Fy << tab << Pdisk <<endl;      
   }                               
     
 /*

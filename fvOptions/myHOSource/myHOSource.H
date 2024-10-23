@@ -162,7 +162,7 @@ private:
 public:
 
     //- Runtime type information
-    TypeName("HOSource");
+    TypeName("myHOSource");
 
 
     // Constructors
@@ -312,7 +312,7 @@ public:
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #ifdef NoRepository
-    #include "HOSourceTemplates.C"
+    #include "myHOSourceTemplates.C"
 #endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
