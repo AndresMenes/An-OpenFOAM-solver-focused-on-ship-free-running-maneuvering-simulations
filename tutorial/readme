@@ -1,3 +1,5 @@
 This is a turning maneuvering simulation for a KCS hull with 35 degree rudder angle
 you should run the ./Allrun script to launch the simulation
 a gif was attached to show the turning processing, and it's a full 6DoFs motions.
+
+Turning35-2 is a clone of the original tutorial modified so it works directly.

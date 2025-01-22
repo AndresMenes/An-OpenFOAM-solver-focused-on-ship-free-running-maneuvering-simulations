@@ -1,0 +1,111 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    arch        "LSB;label=32;scalar=64";
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+13
+(
+    inlet
+    {
+        type            patch;
+        nFaces          430;
+        startFace       1151677;
+    }
+    outlet
+    {
+        type            patch;
+        nFaces          430;
+        startFace       1152107;
+    }
+    ymin
+    {
+        type            symmetry;
+        inGroups        1(symmetry);
+        nFaces          774;
+        startFace       1152537;
+    }
+    ymax
+    {
+        type            symmetry;
+        inGroups        1(symmetry);
+        nFaces          774;
+        startFace       1153311;
+    }
+    zmin
+    {
+        type            symmetry;
+        inGroups        1(symmetry);
+        nFaces          180;
+        startFace       1154085;
+    }
+    atmosphere
+    {
+        type            patch;
+        nFaces          180;
+        startFace       1154265;
+    }
+    overset-1
+    {
+        type            overset;
+        inGroups        1(overset);
+        nFaces          19404;
+        startFace       1154445;
+    }
+    hull_deck
+    {
+        type            wall;
+        inGroups        2(meshedWalls wall);
+        nFaces          1802;
+        startFace       1173849;
+    }
+    hull_hull
+    {
+        type            wall;
+        inGroups        2(meshedWalls wall);
+        nFaces          5065;
+        startFace       1175651;
+    }
+    hull_shaft
+    {
+        type            wall;
+        inGroups        2(meshedWalls wall);
+        nFaces          9;
+        startFace       1180716;
+    }
+    hull_stern
+    {
+        type            wall;
+        inGroups        2(meshedWalls wall);
+        nFaces          44;
+        startFace       1180725;
+    }
+    overset-2
+    {
+        type            overset;
+        inGroups        1(overset);
+        nFaces          4362;
+        startFace       1180769;
+    }
+    rudder
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          3964;
+        startFace       1185131;
+    }
+)
+
+// ************************************************************************* //

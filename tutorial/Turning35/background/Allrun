@@ -26,23 +26,23 @@ runApplication -s 2 setFields -dict system/setFieldsDict.2
 runApplication -s 7 \
     topoSet -dict system/topoSetDict.cHullRudder
 
+cp ./system/controlDict.propulsion ./system/controlDict
+cp ./constant/dynamicMeshDict.propulsion ./constant/dynamicMeshDict
+
 runApplication decomposePar -force
 
-cp ./system/controlDict.propulsion controlDict
-cp ./constant/dynamicMeshDict.propulsion dynamicMeshDict
+#mpirun -np 8 overInterDyMFoam -parallel | tee self.log
 
-mpirun -np 8 overInterDyMFoam -parallel | tee self.log
+#rm ./system/controlDict
 
-rm ./system/controlDict
+#rm ./constant/dynamicMeshDict
 
-rm ./constant/dynamicMeshDict
+#cp ./system/controlDict.turning controlDict
+#cp ./constant/dynamicMeshDict.turning dynamicMeshDict
 
-cp ./system/controlDict.turning controlDict
-cp ./constant/dynamicMeshDict.turning dynamicMeshDict
+#cp maneuvers ./processor0/10/uniform
 
-cp maneuvers ./processor0/10/uniform
-
-mpirun -np 8 overInterDyMFoam -parallel | tee turning.log
+#mpirun -np 8 overInterDyMFoam -parallel | tee turning.log
 
 #runParallel $(getApplication) >> o.log
 
